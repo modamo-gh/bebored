@@ -1,20 +1,30 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+	Nunito_400Regular,
+	Nunito_700Bold,
+	useFonts
+} from "@expo-google-fonts/nunito";
+import { SafeAreaView, Text } from "react-native";
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+const App = () => {
+	const [fontsLoaded] = useFonts({ Nunito_400Regular, Nunito_700Bold });
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	if(!fontsLoaded){
+		return null;
+	}
+
+	return (
+		<SafeAreaView
+			style={{
+				alignItems: "center",
+				backgroundColor: "black",
+				display: "flex",
+				flex: 1,
+				justifyContent: "center"
+			}}
+		>
+			<Text style={{ color: "white", fontFamily: "Nunito_700Bold", fontSize: 48 }}>BeBored.</Text>
+		</SafeAreaView>
+	);
+};
+
+export default App;
